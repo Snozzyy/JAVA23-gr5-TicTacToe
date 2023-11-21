@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Player {
-    private static boolean playerOne;
+    private static boolean playerTurn;
     private static String[] gameBoard = new String[9];
 
     Player() {
@@ -9,24 +9,30 @@ public class Player {
     }
 
     // Randomiserar huruvida playerOne är True eller False
-    private void randomPlayer() {
+    private static void randomPlayer() {
         Random random = new Random();
-        playerOne = random.nextBoolean();
+        playerTurn = random.nextBoolean();
     }
 
-    // Tar input från GUI och lägger in X/O i Array samt skiftar mellan spelare.
+    public static boolean getPlayerTurn() {
+        return playerTurn;
+    }
+
+    public static void setPlayerTurn(boolean turn){
+        playerTurn = turn;
+    }
+
+    // Tar input från GUI och lägger in X/O i Array
     public static void setBoard(int position) {
-        // Säkerställer så man inte kan välja samma knapp flera gånger
+        // Säkerställer så man inte kan välja samma knapp flera gånger (funkar inte)
         if (gameBoard[position] == null) {
-            if (playerOne) {
+            if (playerTurn) {
                 gameBoard[position] = "X";
-                playerOne = false;
             } else {
                 gameBoard[position] = "O";
-                playerOne = true;
             }
         } else {
-            System.out.println("Invalid choice");
+            System.out.println("Invalid choice ");
         }
     }
 
