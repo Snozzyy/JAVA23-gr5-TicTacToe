@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Player {
     private static boolean playerOne;
-    private static String[] board = new String[9];
+    private static String[] gameBoard = new String[9];
 
     Player() {
         randomPlayer();
@@ -17,12 +17,12 @@ public class Player {
     // Tar input från GUI och lägger in X/O i Array samt skiftar mellan spelare.
     public static void setBoard(int position) {
         // Säkerställer så man inte kan välja samma knapp flera gånger
-        if (board[position] == null) {
+        if (gameBoard[position] == null) {
             if (playerOne) {
-                board[position] = "X";
+                gameBoard[position] = "X";
                 playerOne = false;
             } else {
-                board[position] = "O";
+                gameBoard[position] = "O";
                 playerOne = true;
             }
         } else {
@@ -30,7 +30,7 @@ public class Player {
         }
     }
 
-    public static String[] getBoard(){
-        return board;
+    public static String[] getGameBoard(){
+        return gameBoard;
     }
 }

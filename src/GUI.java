@@ -135,6 +135,6 @@ public class GUI extends JFrame implements ActionListener {
             // Skickar vald knapp till Players.setBoard()
             Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
             // Test
-            System.out.println(Arrays.toString(Player.getBoard()));
+            System.out.println(Arrays.toString(Player.getGameBoard()));
         }
     }
