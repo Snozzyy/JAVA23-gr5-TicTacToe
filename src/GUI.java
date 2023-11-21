@@ -109,7 +109,7 @@ public class GUI extends JFrame implements ActionListener {
             creditPanel.add(creditHeader,BorderLayout.NORTH);
 
             // Information om vem som har gjort programmet
-            JTextField creditLabel = new JTextField("Credits: Adam Barnell\n, Oliver Schuller\n, Carl\n, Reidar\n");
+            JTextField creditLabel = new JTextField("Credits: Adam Barnell\n, Oliver Schuller\n, Carl Sundberg\n, Reidar Thorsen\n");
             creditLabel.setEnabled(false);
             creditLabel.setFont(new Font("Serif", Font.BOLD, 30));
             creditPanel.add(creditLabel, BorderLayout.CENTER);
