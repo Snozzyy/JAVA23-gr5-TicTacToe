@@ -121,7 +121,7 @@ import java.awt.event.ActionListener;
 
         private void playButtons(JPanel gameBoard) {
             for (int i = 0; i < 9; i++) {
-                buttons[i] = new JButton();
+                buttons[i] = new JButton(String.valueOf(i+1));
                 buttons[i].addActionListener(this);
                 buttons[i].setBackground(Color.lightGray);
                 buttons[i].setBorder(BorderFactory.createLineBorder(Color.black, 2));
