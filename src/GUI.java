@@ -2,8 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
-    public class GUI extends JFrame implements ActionListener {
+public class GUI extends JFrame implements ActionListener {
 
         private JButton[] buttons = new JButton[9];
         private CardLayout cardLayout = new CardLayout();
@@ -131,6 +132,9 @@ import java.awt.event.ActionListener;
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            // Skickar vald knapp till Players.setBoard()
+            Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
+            // Test
+            System.out.println(Arrays.toString(Player.getBoard()));
         }
     }
