@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -139,17 +140,22 @@ public class GUI extends JFrame implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // Skickar vald knapp till Players.setBoard()
-            Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
-
             // Endast test atm, bör göras som en funktion sen
-            // Om getRandomPlayer == True är det X tur, annars 0 tur
-            if (Player.getPlayerTurn()) {
-                buttons[Integer.parseInt(e.getActionCommand())-1].setText("X");
-                Player.setPlayerTurn(false);
-            } else {
-                buttons[Integer.parseInt(e.getActionCommand())-1].setText("O");
-                Player.setPlayerTurn(true);
+            try {
+                // Kollar vilken spelare som startar och lägger sen in X/O på vald plats
+                if (Player.getPlayerTurn()) {
+                    Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
+                    buttons[Integer.parseInt(e.getActionCommand())-1].setText("X");
+                    Player.setPlayerTurn(false);
+                } else {
+                    Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
+                    buttons[Integer.parseInt(e.getActionCommand())-1].setText("O");
+                    Player.setPlayerTurn(true);
+                }
+            }
+            // Ifall en redan tagen plats väljs så skapar Java ett error, hantera det och skicka felmeddelande till användare
+            catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Invalid choice, try again");
             }
         }
     }

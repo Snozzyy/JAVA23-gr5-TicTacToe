@@ -25,14 +25,10 @@ public class Player {
     // Tar input från GUI och lägger in X/O i Array
     public static void setBoard(int position) {
         // Säkerställer så man inte kan välja samma knapp flera gånger (funkar inte)
-        if (gameBoard[position] == null) {
-            if (playerTurn) {
-                gameBoard[position] = "X";
-            } else {
-                gameBoard[position] = "O";
-            }
+        if (playerTurn) {
+            gameBoard[position] = "X";
         } else {
-            System.out.println("Invalid choice ");
+            gameBoard[position] = "O";
         }
     }
 
