@@ -18,28 +18,29 @@ public class GUI extends JFrame implements ActionListener {
 
             add(cardPanel);
 
-            JPanel gamePanel = createGamePanel();
+            JPanel gamePanel = gamePanel();
 
-            JPanel menuPanel = createMenuPanel();
+            JPanel menuPanel = menuPanel();
 
-            JPanel creditPanel = createCreditPanel();
+            JPanel creditPanel = creditPanel();
 
             cardPanel.add(menuPanel, "Menu");
             cardPanel.add(gamePanel, "Game");
             cardPanel.add(creditPanel,"Credit");
-
+            //Visar menyn när programmet startar
             cardLayout.show(cardPanel, "Menu");
 
             setVisible(true);
         }
-        //Spelet
+        //Menuknappen
         public JButton mainMenuButton(){
             JButton mainMenuButton = new JButton("Main Menu");
             mainMenuButton.setPreferredSize(new Dimension(200,50));
             mainMenuButton.addActionListener(e -> cardLayout.show(cardPanel, "Menu"));
             return mainMenuButton;
         }
-        private JPanel createGamePanel() {
+        //Spelpanelen som skapar gridlayout till spelet och en panel för information
+        private JPanel gamePanel() {
 
             JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -65,8 +66,8 @@ public class GUI extends JFrame implements ActionListener {
 
             return mainPanel;
         }
-        //Main Menu
-        private JPanel createMenuPanel() {
+        //MainMenu sidan som visar de olika alternativen man har i menyn.
+        private JPanel menuPanel() {
             JPanel menuPanel = new JPanel();
             menuPanel.setLayout(new GridLayout(4, 2, 10, 10));
 
@@ -75,9 +76,9 @@ public class GUI extends JFrame implements ActionListener {
             mainMenuLabel.setForeground(new Color(115, 108, 237));
             menuPanel.add(mainMenuLabel,BorderLayout.NORTH);
 
-            JButton startButton = createStyledButton("Start Game");
-            JButton creditButton = createStyledButton("Credit");
-            JButton exitButton = createStyledButton("Exit Game");
+            JButton startButton = mainMenuButton("Start Game");
+            JButton creditButton = mainMenuButton("Credit");
+            JButton exitButton = mainMenuButton("Exit Game");
 
             startButton.addActionListener(e -> cardLayout.show(cardPanel, "Game"));
             exitButton.addActionListener(e -> System.exit(0));
@@ -91,7 +92,7 @@ public class GUI extends JFrame implements ActionListener {
 
             return menuPanel;
         }
-        private JButton createStyledButton(String text) {
+        private JButton mainMenuButton(String text) {
             JButton button = new JButton(text);
             button.setFont(new Font("Times New Roman", Font.BOLD, 30));
             button.setBackground(new Color(212, 193, 236));
@@ -100,7 +101,8 @@ public class GUI extends JFrame implements ActionListener {
             button.setMaximumSize(new Dimension(200, 50));
             return button;
         }
-        private JPanel createCreditPanel(){
+        //Credit sidan som visar vilka som har gjort programmet
+        private JPanel creditPanel(){
             JPanel creditPanel = new JPanel(new BorderLayout());
 
             //Headern
