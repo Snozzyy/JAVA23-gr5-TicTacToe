@@ -39,6 +39,7 @@ public class GUI extends JFrame implements ActionListener {
             mainMenuButton.setPreferredSize(new Dimension(200,50));
             mainMenuButton.addActionListener(e -> cardLayout.show(cardPanel, "Menu"));
             mainMenuButton.setBackground(new Color(242, 204, 195));
+            mainMenuButton.setForeground(new Color(115, 108, 237));
             mainMenuButton.setFont(new Font("Serif",Font.BOLD,30));
             return mainMenuButton;
         }
@@ -49,6 +50,7 @@ public class GUI extends JFrame implements ActionListener {
 
             JPanel gameBoard = new JPanel(new GridLayout(3, 3, 10, 10));
             gameBoard.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+            gameBoard.setBackground(new Color(242, 223, 215));
             playButtons(gameBoard);
             mainPanel.add(gameBoard, BorderLayout.CENTER);
 
@@ -99,7 +101,7 @@ public class GUI extends JFrame implements ActionListener {
             JButton button = new JButton(text);
             button.setFont(new Font("Times New Roman", Font.BOLD, 30));
             button.setBackground(new Color(212, 193, 236));
-            button.setForeground(Color.BLACK);
+            button.setForeground(new Color(115, 108, 237));
             button.setAlignmentX(Component.CENTER_ALIGNMENT);
             button.setMaximumSize(new Dimension(200, 50));
             return button;
@@ -111,6 +113,7 @@ public class GUI extends JFrame implements ActionListener {
             //Headern
             JLabel creditHeader = new JLabel("Credits", SwingConstants.CENTER);
             creditHeader.setFont(new Font("Serif", Font.BOLD, 100));
+            creditHeader.setForeground(new Color(115, 108, 237));
             creditPanel.add(creditHeader,BorderLayout.NORTH);
 
             // Information om vem som har gjort programmet
