@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -134,7 +133,15 @@ public class GUI extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             // Skickar vald knapp till Players.setBoard()
             Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
-            // Test
-            System.out.println(Arrays.toString(Player.getGameBoard()));
+
+            // Endast test atm, bör göras som en funktion sen
+            // Om getRandomPlayer == True är det X tur, annars 0 tur
+            if (Player.getPlayerTurn()) {
+                buttons[Integer.parseInt(e.getActionCommand())-1].setText("X");
+                Player.setPlayerTurn(false);
+            } else {
+                buttons[Integer.parseInt(e.getActionCommand())-1].setText("O");
+                Player.setPlayerTurn(true);
+            }
         }
     }
