@@ -123,6 +123,7 @@ public class GUI extends JFrame implements ActionListener {
             for (int i = 0; i < 9; i++) {
                 buttons[i] = new JButton(String.valueOf(i+1));
                 buttons[i].addActionListener(this);
+                buttons[i].setFont(new Font("Serif", Font.BOLD,40));
                 buttons[i].setBackground(Color.lightGray);
                 buttons[i].setBorder(BorderFactory.createLineBorder(Color.black, 2));
                 gameBoard.add(buttons[i]);
