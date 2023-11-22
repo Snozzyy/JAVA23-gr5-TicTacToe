@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.Arrays;
 
 public class GUI extends JFrame implements ActionListener {
@@ -16,8 +17,8 @@ public class GUI extends JFrame implements ActionListener {
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
-
+        Image icon = new ImageIcon(this.getClass().getResource("/icon.png")).getImage();
+        this.setIconImage(icon);
         add(cardPanel);
 
         JPanel gamePanel = gamePanel();
@@ -56,7 +57,7 @@ public class GUI extends JFrame implements ActionListener {
         JLabel scoreName = new JLabel("Scoreboard:", SwingConstants.LEFT);
         scoreName.setFont(new Font("Serif", Font.BOLD, 20));
 
-        JLabel whosTurn = new JLabel("Your turn: ", SwingConstants.RIGHT);
+        JLabel whosTurn = new JLabel("Your turn: " + Player.getPlayerTurn(), SwingConstants.RIGHT);
         whosTurn.setFont(new Font("Serif", Font.BOLD, 20));
 
         JPanel scorePanel = new JPanel(new BorderLayout());
