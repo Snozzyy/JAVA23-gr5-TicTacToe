@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class GUI extends JFrame implements ActionListener {
 
@@ -142,22 +143,21 @@ public class GUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Endast test atm, bör göras som en funktion sen
-        try {
-            // Kollar vilken spelare som startar och lägger sen in X/O på vald plats
+        // Kollar ifall knappen är X/O, om den är printa invalid
+        if (e.getActionCommand().equals("X") || e.getActionCommand().equals("O")) {
+            System.out.println("Invalid");
+        } else {
+            // Ifall getPlayerTurn() == True så sätt dit X och växla till andra spelaren
             if (Player.getPlayerTurn()) {
                 Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
                 buttons[Integer.parseInt(e.getActionCommand())-1].setText("X");
                 Player.setPlayerTurn(false);
             } else {
+                // Ifall getPlayerTurn() == False så sätt dit O och växla till andra spelaren
                 Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
                 buttons[Integer.parseInt(e.getActionCommand())-1].setText("O");
                 Player.setPlayerTurn(true);
             }
-        }
-        // Ifall en redan tagen plats väljs så skapar Java ett error, hantera det och skicka felmeddelande till användare
-        catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Invalid choice, try again");
         }
 
         String winner = Player.checkForWin();

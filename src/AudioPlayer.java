@@ -26,8 +26,7 @@ class AudioPlayer {
         }
 
 // Test SFX
-        /*
-        JButton button = new JButton(spela up");
+        JButton button = new JButton("spela up");
         Clip finalClip = clip;
         button.addActionListener(new ActionListener()
         {
@@ -41,8 +40,6 @@ class AudioPlayer {
 
         JOptionPane.showMessageDialog(null, button);
 
-
-         */
     }
 }
 
