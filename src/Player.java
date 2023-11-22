@@ -35,6 +35,14 @@ public class Player {
         playerTurn = turn;
     }
 
+    public static String getPlayerString(){
+        if (playerTurn) {
+            return "Player 1 (X)";
+        } else {
+            return "Player 2 (O)";
+        }
+    }
+
     // Tar input från GUI och lägger in X/O i Array
     public static void setBoard(int position) {
         // Säkerställer så man inte kan välja samma knapp flera gånger (funkar inte)

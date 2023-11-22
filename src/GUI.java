@@ -11,6 +11,7 @@ public class GUI extends JFrame implements ActionListener {
     private JButton[] buttons = new JButton[9];
     private CardLayout cardLayout = new CardLayout();
     private JPanel cardPanel = new JPanel(cardLayout);
+    private JLabel whosTurn;
 
     public GUI() {
         super("Tic Tac Toe");
@@ -58,7 +59,7 @@ public class GUI extends JFrame implements ActionListener {
         JLabel scoreName = new JLabel("Scoreboard:", SwingConstants.LEFT);
         scoreName.setFont(new Font("Serif", Font.BOLD, 20));
 
-        JLabel whosTurn = new JLabel("Your turn: " + Player.getPlayerTurn(), SwingConstants.RIGHT);
+        whosTurn = new JLabel("Your turn: " + Player.getPlayerString(), SwingConstants.RIGHT);
         whosTurn.setFont(new Font("Serif", Font.BOLD, 20));
 
         JPanel scorePanel = new JPanel(new BorderLayout());
@@ -152,11 +153,13 @@ public class GUI extends JFrame implements ActionListener {
                 Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
                 buttons[Integer.parseInt(e.getActionCommand())-1].setText("X");
                 Player.setPlayerTurn(false);
+                whosTurn.setText("Your turn: " + Player.getPlayerString());
             } else {
                 // Ifall getPlayerTurn() == False så sätt dit O och växla till andra spelaren
                 Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
                 buttons[Integer.parseInt(e.getActionCommand())-1].setText("O");
                 Player.setPlayerTurn(true);
+                whosTurn.setText("Your turn: " + Player.getPlayerString());
             }
         }
 
