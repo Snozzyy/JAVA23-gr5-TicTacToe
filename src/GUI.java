@@ -37,6 +37,8 @@ public class GUI extends JFrame implements ActionListener {
             JButton mainMenuButton = new JButton("Main Menu");
             mainMenuButton.setPreferredSize(new Dimension(200,50));
             mainMenuButton.addActionListener(e -> cardLayout.show(cardPanel, "Menu"));
+            mainMenuButton.setBackground(new Color(242, 204, 195));
+            mainMenuButton.setFont(new Font("Serif",Font.BOLD,30));
             return mainMenuButton;
         }
         //Spelpanelen som skapar gridlayout till spelet och en panel för information
@@ -111,10 +113,13 @@ public class GUI extends JFrame implements ActionListener {
             creditPanel.add(creditHeader,BorderLayout.NORTH);
 
             // Information om vem som har gjort programmet
-            JTextField creditLabel = new JTextField("Credits: Adam Barnell\n, Oliver Schuller\n, Carl Sundberg\n, Reidar Thorsen\n");
-            creditLabel.setEnabled(false);
-            creditLabel.setFont(new Font("Serif", Font.BOLD, 30));
-            creditPanel.add(creditLabel, BorderLayout.CENTER);
+            JTextArea creditTextField = new JTextArea(" Adam Barnell\n Oliver Schuller\n Carl Sundberg\n Reidar Thorsen");
+            creditTextField.setEditable(false);
+            creditTextField.setLineWrap(true);
+            creditTextField.setFont(new Font("Serif", Font.BOLD, 50));
+            creditTextField.setBackground(new Color(242, 223, 215));
+            creditTextField.setForeground(new Color(115, 108, 237));
+            creditPanel.add(creditTextField, BorderLayout.CENTER);
 
             creditPanel.add(mainMenuButton(), BorderLayout.SOUTH);
 
