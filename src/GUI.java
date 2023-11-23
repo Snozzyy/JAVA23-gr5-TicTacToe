@@ -46,6 +46,7 @@ public class GUI extends JFrame implements ActionListener {
         mainMenuButton.setFont(new Font("Serif",Font.BOLD,30));
         return mainMenuButton;
     }
+    private JLabel scoreLabel;
     //Spelpanelen som skapar gridlayout till spelet och en panel för information
     private JPanel gamePanel() {
 
@@ -56,14 +57,14 @@ public class GUI extends JFrame implements ActionListener {
         playButtons(gameBoard);
         mainPanel.add(gameBoard, BorderLayout.CENTER);
 
-        JLabel scoreName = new JLabel("Scoreboard:", SwingConstants.LEFT);
-        scoreName.setFont(new Font("Serif", Font.BOLD, 20));
+        scoreLabel = new JLabel(Player.getScore(), SwingConstants.LEFT);
+        scoreLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
         whosTurn = new JLabel("Your turn: " + Player.getPlayerString(), SwingConstants.RIGHT);
         whosTurn.setFont(new Font("Serif", Font.BOLD, 20));
 
         JPanel scorePanel = new JPanel(new BorderLayout());
-        scorePanel.add(scoreName, BorderLayout.WEST);
+        scorePanel.add(scoreLabel, BorderLayout.WEST);
         scorePanel.add(whosTurn, BorderLayout.EAST);
         scorePanel.setPreferredSize(new Dimension(200, 100));
         scorePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -133,9 +134,9 @@ public class GUI extends JFrame implements ActionListener {
 
     private void playButtons(JPanel gameBoard) {
         for (int i = 0; i < 9; i++) {
-            buttons[i] = new JButton(String.valueOf(i+1));
+            buttons[i] = new JButton(String.valueOf(i + 1));
             buttons[i].addActionListener(this);
-            buttons[i].setFont(new Font("Serif", Font.BOLD,40));
+            buttons[i].setFont(new Font("Serif", Font.BOLD, 40));
             buttons[i].setBackground(Color.lightGray);
             buttons[i].setBorder(BorderFactory.createLineBorder(Color.black, 2));
             gameBoard.add(buttons[i]);
@@ -145,6 +146,7 @@ public class GUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // Kollar ifall knappen är X/O, om den är printa invalid
+
         if (e.getActionCommand().equals("X") || e.getActionCommand().equals("O")) {
             System.out.println("Invalid");
         } else {
@@ -165,9 +167,12 @@ public class GUI extends JFrame implements ActionListener {
 
         String winner = Player.checkForWin();
         if (!winner.isEmpty()) {
+            scoreLabel.setText(Player.getScore());
             JOptionPane.showMessageDialog(null, "Game over!\n " + winner + " wins!");
+            Audio.winningSound();
         } else if (Player.isBoardFull()) {
             JOptionPane.showMessageDialog(null, "It's a draw!");
+            Audio.playerDrawSound();
         }
     }
 }

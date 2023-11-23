@@ -3,6 +3,8 @@ import java.util.*;
 public class Player {
     private static boolean playerTurn;
     private static String[] gameBoard = new String[9];
+    private static int xWins = 0;
+    private static int oWins = 0;
 
     private static final int[][] winningCombinations = {
             {0, 1, 2},
@@ -16,7 +18,6 @@ public class Player {
     };
 
     Player() {
-
         randomPlayer();
         Arrays.fill(gameBoard, "");
     }
@@ -61,7 +62,6 @@ public class Player {
         }
         return true;
     }
-
     public static String checkForWin() {
         for (int[] combination : winningCombinations) {
 
@@ -70,10 +70,19 @@ public class Player {
             String cell3 = gameBoard[combination[2]];
 
             if (cell1 != null && cell1.equals(cell2) && cell1.equals(cell3) && !cell1.isEmpty()) {
+                if (cell1.equals("X")){
+                    xWins++;
+                } else{
+                    oWins++;
+                }
                 return cell1;
             }
         }
         return "";
+    }
+
+    public static String getScore(){
+        return "X wins: " + xWins + " || O wins: " + oWins;
     }
 
 
