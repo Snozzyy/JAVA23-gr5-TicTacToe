@@ -145,8 +145,9 @@ public class GUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Kollar ifall knappen är X/O, om den är printa invalid
+        Audio.btnSound();
 
+        // Kollar ifall knappen är X/O, om den är printa invalid
         if (e.getActionCommand().equals("X") || e.getActionCommand().equals("O")) {
             System.out.println("Invalid");
         } else {
