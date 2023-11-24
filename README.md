@@ -3,7 +3,7 @@
 
 Play the famous game Tic Tac Toe
 
-*** Features:
+### Features:
 - Play against a friend
 - Sound effects
 - Keep track on who wins the most
