@@ -157,16 +157,17 @@ public class GUI extends JFrame implements ActionListener {
         if (e.getActionCommand().equals("X") || e.getActionCommand().equals("O")) {
             System.out.println("Invalid");
         } else {
+            int buttonToInt = Integer.parseInt(e.getActionCommand())-1;
             // Ifall getPlayerTurn() == True så sätt dit X och växla till andra spelaren
             if (Player.getPlayerTurn()) {
-                Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
-                buttons[Integer.parseInt(e.getActionCommand())-1].setText("X");
+                Player.setBoard(buttonToInt);
+                buttons[buttonToInt].setText("X");
                 Player.setPlayerTurn(false);
                 whosTurn.setText("Your turn: " + Player.getPlayerString());
             } else {
                 // Ifall getPlayerTurn() == False så sätt dit O och växla till andra spelaren
-                Player.setBoard(Integer.parseInt(e.getActionCommand())-1);
-                buttons[Integer.parseInt(e.getActionCommand())-1].setText("O");
+                Player.setBoard(buttonToInt);
+                buttons[buttonToInt].setText("O");
                 Player.setPlayerTurn(true);
                 whosTurn.setText("Your turn: " + Player.getPlayerString());
             }
@@ -175,12 +176,12 @@ public class GUI extends JFrame implements ActionListener {
         String winner = Player.checkForWin();
         if (!winner.isEmpty()) {
             scoreLabel.setText(Player.getScore());
-            JOptionPane.showMessageDialog(null, "Game over!\n " + winner + " wins!");
             Audio.winningSound();
+            JOptionPane.showMessageDialog(null, "Game over!\n " + winner + " wins!");
             resetGame();
         } else if (Player.isBoardFull()) {
-            JOptionPane.showMessageDialog(null, "It's a draw!");
             Audio.playerDrawSound();
+            JOptionPane.showMessageDialog(null, "It's a draw!");
             resetGame();
         }
     }

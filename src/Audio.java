@@ -11,30 +11,6 @@ import static javax.sound.sampled.AudioSystem.getClip;
 // https://mixkit.co/free-sound-effects/lose/
 
 class Audio {
-
-    Audio() {
-
-// Test SFX
-        JButton button = new JButton("spela up");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                try {
-                    // getClip(btnSound());
-                    getClip(winningSound());
-                    // getClip(losingSound());
-                    // getClip(playerDrawSound());
-                    // getClip(bakgrundMusic());
-                } catch (LineUnavailableException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-
-        JOptionPane.showMessageDialog(null, button);
-
-    }
-
     private static Mixer.Info getInfo(File file) {
         Clip clip; // Playback till för-laddade ljud fil
         try {
@@ -65,20 +41,8 @@ class Audio {
         return getInfo(file);
     }
 
-    static Mixer.Info losingSound() {
-        File file = new File("src/SFX/player-losing-2042.wav");
-
-        return getInfo(file);
-    }
-
     static Mixer.Info playerDrawSound() {
         File file = new File("src/SFX/player-draw-947.wav");
-
-        return getInfo(file);
-    }
-
-    static Mixer.Info bakgrundMusic() {  // Kan tas bort
-        File file = new File("null");
 
         return getInfo(file);
     }

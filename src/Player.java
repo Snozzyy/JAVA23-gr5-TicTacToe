@@ -85,11 +85,6 @@ public class Player {
         return "X wins: " + xWins + " || O wins: " + oWins;
     }
 
-
-    public static String[] getGameBoard(){
-        return gameBoard;
-    }
-
     public static void resetBoard() {
         Arrays.fill(gameBoard, "");
         randomPlayer();
