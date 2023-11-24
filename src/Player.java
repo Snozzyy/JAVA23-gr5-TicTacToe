@@ -89,4 +89,10 @@ public class Player {
     public static String[] getGameBoard(){
         return gameBoard;
     }
+
+    public static void resetBoard() {
+        Arrays.fill(gameBoard, "");
+        randomPlayer();
+    }
+
 }

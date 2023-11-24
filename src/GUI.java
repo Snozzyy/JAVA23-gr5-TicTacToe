@@ -142,7 +142,13 @@ public class GUI extends JFrame implements ActionListener {
             gameBoard.add(buttons[i]);
         }
     }
-
+    private void resetGame() {
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i].setText(String.valueOf(i + 1));
+            Player.resetBoard();
+        }
+        whosTurn.setText("Your turn: " + Player.getPlayerString());
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         Audio.btnSound();
@@ -171,9 +177,11 @@ public class GUI extends JFrame implements ActionListener {
             scoreLabel.setText(Player.getScore());
             JOptionPane.showMessageDialog(null, "Game over!\n " + winner + " wins!");
             Audio.winningSound();
+            resetGame();
         } else if (Player.isBoardFull()) {
             JOptionPane.showMessageDialog(null, "It's a draw!");
             Audio.playerDrawSound();
+            resetGame();
         }
     }
 }
